@@ -1,17 +1,17 @@
 {
-  "name": "typescript-template",
+  "name": "laconic",
   "version": "0.0.0",
-  "description": "Typescript Template Repository",
+  "description": "HTML Web Component Framework",
   "main": "./build/bundle.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "npm run transpile && npm run compile && npm run docs",
-    "clean": "npm run transpile:clean && npm run compile:clean && npm run docs:clean",
+    "build": "yarn transpile && yarn compile && yarn docs",
+    "clean": "yarn transpile:clean && yarn compile:clean && yarn docs:clean",
     "compile": "rollup -c ./rollup.config.js",
     "compile:clean": "rimraf ./build",
     "compile:watch": "rollup -c ./rollup.config.js -w",
-    "docs": "npm run docs:clean && npm run docs:extract && npm run docs:generate",
+    "docs": "yarn docs:clean && yarn docs:extract && yarn docs:generate",
     "docs:clean": "rimraf ./docs",
     "docs:extract": "api-extractor run -c ./api-extractor.json",
     "docs:generate": "api-documenter markdown -i ./docs/temp -o ./docs",
@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/AlboeDev/typescript-template.git"
+    "url": "git+ssh://git@github.com:AlboeDev/laconic.git"
   },
   "author": "Alboe Development",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlboeDev/typescript-template/issues"
+    "url": "https://github.com/AlboeDev/laconic/issues"
   },
-  "homepage": "https://github.com/AlboeDev/typescript-template#readme",
+  "homepage": "https://github.com/AlboeDev/laconic#readme",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -41,6 +41,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@microsoft/api-documenter": "^7.13.33",
     "@microsoft/api-extractor": "^7.18.4",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "^8.2.3",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
