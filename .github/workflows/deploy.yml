@@ -6,6 +6,9 @@ on:
       - main
     types: [closed]
 
+permissions:
+  contents: write
+
 env:
   rid: ${{ github.run_id }}-${{ github.run_number }}
 
@@ -33,7 +36,7 @@ jobs:
 
       - name: Install Dependencies
         if: steps.validate-dependencies.outputs.cache-hit != 'true'
-        run: npm install
+        run: yarn
 
       - name: Cache Dependencies
         uses: actions/cache@v2
@@ -64,7 +67,7 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ env.rid }}
 
       - name: Transpile
-        run: npm run transpile
+        run: yarn transpile
 
       - name: Cache Distributable
         uses: actions/cache@v2
@@ -100,7 +103,7 @@ jobs:
           key: dist-${{ runner.os }}-${{ env.rid }}
 
       - name: Generate Documentation
-        run: npm run docs
+        run: yarn docs
 
       - name: Cache Documentation
         uses: actions/cache@v2
