@@ -131,8 +131,8 @@ jobs:
 
       - name: Deploy Documentation
         run: |
-          git config --global user.name "Automation"
-          git config --global user.email "automation@no-reply.com"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add ./docs
           git commit -m "ci(docs): deploy documentation"
           git push
