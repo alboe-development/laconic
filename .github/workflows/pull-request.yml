@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Dependencies
         if: steps.validate-dependencies.outputs.cache-hit != 'true'
-        run: npm install
+        run: yarn
 
       - name: Cache Dependencies
         uses: actions/cache@v2
@@ -40,28 +40,28 @@ jobs:
           path: node_modules/
           key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-  test-source:
-    name: Test Source
-    needs: initialize
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
+  # test-source:
+  #   name: Test Source
+  #   needs: initialize
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Checkout Project
+  #       uses: actions/checkout@v2
 
-      - name: Setup Environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          check-latest: true
+  #     - name: Setup Environment
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 14.x
+  #         check-latest: true
 
-      - name: Uncache Dependencies
-        uses: actions/cache@v2
-        with:
-          path: node_modules/
-          key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+  #     - name: Uncache Dependencies
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: node_modules/
+  #         key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Test Source
-        run: npm test
+  #     - name: Test Source
+  #       run: yarn test
 
   test-static:
     name: Test Static
@@ -84,7 +84,7 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Test Static
-        run: npm run lint
+        run: yarn lint
 
   test-validate:
     name: Test Validate
@@ -107,4 +107,4 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Test Validate
-        run: npm run transpile:validate
+        run: yarn transpile:validate

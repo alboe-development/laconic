@@ -1,4 +1,5 @@
 import { terser } from 'rollup-plugin-terser';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default {
   input: 'dist/index.js',
@@ -7,17 +8,22 @@ export default {
       format: 'umd',
       file: 'build/build.js',
       indent: '\t',
-      name: 'Build',
+      name: 'Laconic',
     },
     {
       format: 'umd',
       file: 'build/build.min.js',
-      name: 'Build',
+      name: 'Laconic',
       plugins: [
         terser(),
       ],
       sourcemap: true,
     },
+  ],
+  plugins: [
+    nodeResolve({
+      browser: true,
+    }),
   ],
   watch: {
     include: './dist/**/*.js',
