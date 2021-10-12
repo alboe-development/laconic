@@ -1,0 +1,3 @@
+export {
+  toKabab,
+} from './string';
